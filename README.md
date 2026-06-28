@@ -167,3 +167,4 @@ public/
 - Keyboard support: arrow keys navigate the lightbox, Escape closes it,
   all interactive elements have visible focus rings.
 - Respects `prefers-reduced-motion`.
+# photo-portfolio
