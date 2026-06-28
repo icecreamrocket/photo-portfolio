@@ -1,0 +1,118 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 14vw;
+  gap: 4px;
+  padding: var(--gutter);
+}
+
+.cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-raised);
+  border: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s;
+  filter: grayscale(0.08);
+}
+
+.cell:hover img {
+  transform: scale(1.035);
+  filter: grayscale(0);
+}
+
+.cell--landscape {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.cell--portrait {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.cell--square {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.cell__tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 11px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: linear-gradient(to top, rgba(18, 18, 18, 0.85), transparent);
+  width: 100%;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.cell:hover .cell__tag,
+.cell:focus-visible .cell__tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cell__frame {
+  color: var(--text-dim);
+}
+
+.cell__category {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.grid-empty {
+  padding: 80px var(--gutter);
+  text-align: center;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Mobile: collapse to single column, always-visible tags ──
+   Hover states don't exist on touch, so tags must be visible by default. */
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 46vw;
+    gap: 3px;
+  }
+
+  .cell--landscape {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .cell--portrait,
+  .cell--square {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .cell__tag {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cell img {
+    filter: grayscale(0);
+  }
+}

@@ -1,0 +1,157 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.97);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  animation: fade-in 0.18s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 5;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 100px;
+}
+
+.lightbox__close:hover {
+  color: var(--text);
+  border-color: var(--text-dim);
+}
+
+.lightbox__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-size: 40px;
+  line-height: 1;
+  padding: 16px 14px;
+  z-index: 5;
+  transition: color 0.15s;
+}
+
+.lightbox__arrow:hover {
+  color: var(--accent);
+}
+
+.lightbox__arrow--left {
+  left: 4px;
+}
+
+.lightbox__arrow--right {
+  right: 4px;
+}
+
+.lightbox__figure {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 64px clamp(16px, 8vw, 90px) 0;
+}
+
+.lightbox__figure img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox__figure figcaption {
+  display: flex;
+  gap: 18px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lightbox__meta-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.lightbox__meta-mono:nth-child(2) {
+  color: var(--accent);
+}
+
+/* Contact-sheet filmstrip */
+.filmstrip {
+  display: flex;
+  gap: 4px;
+  padding: 14px var(--gutter) 18px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.filmstrip::-webkit-scrollbar {
+  display: none;
+}
+
+.filmstrip__frame {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  opacity: 0.45;
+  transition: opacity 0.15s, border-color 0.15s;
+}
+
+.filmstrip__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.filmstrip__frame--active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.filmstrip__frame:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+  .lightbox__arrow {
+    font-size: 30px;
+    padding: 12px 8px;
+  }
+
+  .lightbox__figure {
+    padding: 56px 12px 0;
+  }
+
+  .filmstrip__frame {
+    width: 44px;
+    height: 44px;
+  }
+}
