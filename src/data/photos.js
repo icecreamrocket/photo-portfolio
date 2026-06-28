@@ -87,9 +87,8 @@ export const photos = [
 
 // Site identity — also edited here, not buried in component code.
 export const profile = {
-  name: "Ben Tan",
-  tagline: "Photography",
-  bio: "Frames from Singapore, Malaysia, and wherever the next trip goes. Mostly shot on a Canon G7X III.",
-  email: "you@example.com",
-  instagram: "https://instagram.com/yourhandle",
+  name: "Hagen Li",
+  bio: "Recent Snaps",
+  email: "hagenli616@gmail.com",
+  instagram: "https://instagram.com/hagenli.yj",
 };
